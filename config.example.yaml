@@ -1,0 +1,35 @@
+mysql:
+  host: localhost
+  port: 3306
+  database: blogger_data
+  user: blogger_user
+  password_env: MYSQL_PASSWORD
+  client_path: C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe
+  dump_path: C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe
+
+input:
+  blogger_list: data/blogger_list.xlsx
+
+output:
+  export_dir: exports
+  log_dir: logs
+  backup_dir: backups
+  report_dir: reports
+
+run:
+  crawl_month: auto
+  mode: mock
+  retry_count: 2
+  checkpoint_dir: runtime/checkpoints
+
+report:
+  alert_threshold_percent: 30
+
+source:
+  login_url: https://example.com/
+  search_url: https://example.com/search
+  session_path: .session/session.json
+  request_timeout_ms: 30000
+  # 仅在需要账号配置的辅助登录流程时使用；不要填写明文密码。
+  # username_env: SOURCE_USERNAME
+  # password_env: SOURCE_PASSWORD
